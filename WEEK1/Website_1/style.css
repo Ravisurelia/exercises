@@ -32,7 +32,7 @@
     margin-top: 15px;
     object-fit: contain;
     filter: brightness(70%);
-    height: 730px;
+    height: 712px;
     margin-bottom: 0px;
 }
 
@@ -128,31 +128,28 @@ footer{
     margin-bottom: 0px;
 }
 
-@media screen and (min-width: 400px) and (max-width: 750px) {
-* {
-    font-size: 18px;
-}
-
+@media screen and (min-width: 480px) and (max-width: 768px) {
 #spices {
-    height: auto;
-    width: 80%b;
-
-    object-fit: contain;
-
+    height: 80%;
+    width: 80%;
+}
+h1 {
+    font-size: 35px;
 }
 
-.container2 {
-    height: auto; 
-   
-   
-}
 .welcome{
     font-size: 20px;
+    height: 790px;
+    width: 375px;
+    position: absolute;
+    
 }
 
 .Data {
     display: block;
-    width: 50%;
-    height: auto;
+    top: 40%;
+    left: 25%;
+    width: 100%;
+    height: 100%;
 }
 }
