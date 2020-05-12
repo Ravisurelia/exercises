@@ -1,0 +1,24 @@
+body {
+    margin: 0;
+  }
+  
+  #ticker {
+    overflow: hidden;
+    border-bottom: 2px dashed rgb(241, 132, 7);
+    height: 1.5em;
+    position: relative;
+    background-color: lightgray;
+  }
+  
+  #Sports {
+    white-space: nowrap;
+    position: absolute;
+    left: 95%;
+    top: 0;
+  }
+  
+  #Sports a {
+    padding-right: 40px;
+    font-family: 'Calibri', 'Gill Sans', 'Gill Sans MT',  'Trebuchet MS', sans-serif;
+    color: black;
+  }
