@@ -4,10 +4,10 @@ body {
   
   #ticker {
     overflow: hidden;
-    border-bottom: 2px dashed rgb(241, 132, 7);
+    border-bottom: 2px solid rgb(241, 132, 7);
     height: 1.5em;
     position: relative;
-    background-color: lightgray;
+    background-color: rgb(78, 0, 0);
   }
   
   #Sports {
@@ -19,6 +19,6 @@ body {
   
   #Sports a {
     padding-right: 40px;
-    font-family: 'Calibri', 'Gill Sans', 'Gill Sans MT',  'Trebuchet MS', sans-serif;
-    color: black;
+    font-family: 'sans-serif', 'Calibri', 'Gill Sans', 'Gill Sans MT',  'Trebuchet MS', ;
+    color: whitesmoke;
   }

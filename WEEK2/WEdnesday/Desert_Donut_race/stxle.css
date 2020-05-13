@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    height: 100vh;
+    background-color: #e7c781;
+}
+
+.scenery {
+    position: absolute;
+    top: 0px;
+    height: 60vh;
+    width: 100vw;
+    z-index: 1;
+}
+
+.game-title {
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 40px;
+    color: rgb(193, 79, 59);
+}
+
+.sun {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 80px;
+}
+
+.cactus1 {
+    position: absolute;
+    top: 100px;
+    right: 150px;
+    font-size: 80px;
+}
+
+.cactus2 {
+    position: absolute;
+    top: 130px;
+    right: 350px;
+    font-size: 80px;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    position: absolute;
+    bottom: 0px;
+    height: 60vh;
+    width: 100vw;
+    z-index: 2;
+}
+
+.track {
+    height: 15vh;
+    background-color: #e7c781;
+    border-bottom: dashed rgb(46, 40, 40) 3px;
+}
+
+.runner {
+    position: absolute;
+    font-size: 80px;
+    display: inline-block;
+    transform: scale(-1, 1);
+    transition: left 0.2s ease-in;
+    z-index: 4;
+}
+
+.donut {
+    padding-top: 10px;
+    position: absolute;
+    right: 2px;
+    font-size: 4rem;
+    display: inline-block;
+    z-index: 3;
+}
