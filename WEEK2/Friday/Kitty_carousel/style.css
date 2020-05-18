@@ -28,3 +28,24 @@ body {
     transform: translateX(-100%);
     transition: transform 3s;
 }
+
+#dots{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+   
+}
+
+.dots{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px white solid;
+    margin: 10px;
+}
+
+.on{
+    background-color: chocolate;
+}
