@@ -1,0 +1,31 @@
+.container{
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 150px 2fr 1fr 150px;
+    grid-template-rows: 100px 1fr 100px;
+    gap: 10px;
+}
+
+header{
+    background-color: mediumseagreen;
+    grid-column: 1 / 5;
+}
+
+footer{
+    background-color: mediumvioletred;
+    grid-column: 1 / 5;
+}
+
+.left-sidebar {
+    background-color: olive;
+}
+
+.right-sidebar {
+    background-color: peru;
+}
+
+main{
+    background-color: royalblue;
+}
+
+

@@ -1,0 +1,21 @@
+body{
+    margin: 0;
+    padding: 0px;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 70px 1fr 30px;
+}
+
+main{
+    background-color: gray;
+}
+
+header{
+    background-color: chocolate;
+
+}
+
+footer{ 
+    background-color: mediumturquoise;
+    margin: 0px;
+}
