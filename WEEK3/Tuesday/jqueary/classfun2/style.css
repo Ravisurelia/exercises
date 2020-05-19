@@ -1,0 +1,34 @@
+body{
+    background-color: mediumseagreen;
+}
+
+img {
+    height: 500px;
+    width: 650px;
+    object-fit: cover;
+    object-position: top;
+}
+
+#container {
+    position: relative;
+    height: 500px;
+    width: 650px;
+    border: 5px solid midnightblue;
+}
+
+#top-img,
+#bottom-img {
+    position: absolute;
+}
+
+#slider {
+    position: absolute;
+    left: 250px;
+    width: 10px;
+    height: 100%;
+    background-color: salmon;
+}
+
+#top-img {
+    overflow: hidden;
+}
