@@ -1,0 +1,36 @@
+body {
+    background-color: lightgray;
+   
+}
+
+.board {
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.slot {
+    width: 100px;
+    height: 100px;
+    background-color: darkgoldenrod;
+}
+
+.hole {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: white;
+    position: relative;
+    left: 10px;
+    top: 10px;
+}
+
+.player1 .hole {
+    background-color: red;
+}
+
+.player2 .hole {
+    background-color: blue;
+}

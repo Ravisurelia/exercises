@@ -47,13 +47,13 @@
                 results.show();
             }
         }
-        noResponse();
+        //noResponse();
 
     });
 
     //highlighted mouseover mousedown
 
-    function highlightedCountries(item){
+    function highlightedCountries(){
         $(".countriesContainer p").on("mouseover", function(e){
             $(e.target).addClass("highlighted");
             $(e.target).on("mouseleave", function (e) {
@@ -72,7 +72,7 @@
             }
         });
     }
-    selectedCountry();
+    //selectedCountry();
 
     //keypress
     function handleWithKeys(e) {
