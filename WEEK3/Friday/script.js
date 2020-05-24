@@ -47,7 +47,7 @@
                 !slotsInColumn.eq(i).hasClass('player2')
             ) {
                 slotsInColumn.eq(i).addClass(currentPlayer);
-                //emptySlotFound = true;
+                emptySlotFound = true;
                 break; // we have to break to stop the loop
             }
         }
