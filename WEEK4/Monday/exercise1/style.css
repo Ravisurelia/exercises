@@ -1,0 +1,21 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#text{
+    margin-top: 20px;
+    border: 1px solid midnightblue;
+}
+
+#clickbutton{
+    border-radius: 10px;
+    border: 1px solid midnightblue;
+    font-family: sans-serif;
+    margin-top: 10px;
+    width: 100px;
+    height: 50px;
+    font-size: 18px;
+}
