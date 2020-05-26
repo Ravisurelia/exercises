@@ -1,8 +1,8 @@
 (function () {
     var request;
-
+    var links = sports.querySelectorAll("a");
     var sports = document.getElementById("Sports");
-    var links = sports.getElementsByTagName("a");
+    
     var linksArray = [];
 
     for (var i = 0; i < links.length; i++) {
