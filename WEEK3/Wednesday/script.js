@@ -4,7 +4,7 @@
     //console.log("inputField: ", inputField);
     var countriesContainer = $(".countries-container");
     //console.log("countriesContainer:", countriesContainer);
-    var noResult = false;
+
     inputField.on("input", function(){
         //console.log("input is running!");
         
@@ -39,52 +39,62 @@
         countriesContainer.html(htmlToDom);  
         
         function noResponse(){
+            var doesNotMatch = 0;
             if (userInput === ""){
                 results.hide();
-            } else if (doesNotMatch) {
+            } else if (doesNotMatch != htmlToDom) {
                 results.html("<p class='no-result'>No result!</p>");
             } else {
                 results.show();
             }
         }
-        //noResponse();
+        noResponse();
 
     });
 
     //highlighted mouseover mousedown
 
-    function highlightedCountries(){
-        $(".countriesContainer p").on("mouseover", function(e){
-            $(e.target).addClass("highlighted");
-            $(e.target).on("mouseleave", function (e) {
-                $(e.target).removeClass("highlighted");
-            });
-        });
-    }
+    countriesContainer.on("mouseover", "p", function(e){
+        $(e.target).addClass("highlighted");
+
+    });
+
+    countriesContainer.on("mouseout", "p", function(e){
+        $(e.target).removeClass("highlighted");
+
+    });
+
 
     function selectedCountry() {
         $(".countriesContainer p").on("mousedown", function (e) {
             e.preventDefault();
-            if (e.target.nodeName === "P") {
+            if (e.target.nodeName === "p") {
                 var text = $(e.target)[0].innerText;
-                field.val(text);
+                inputField.val(text);
                 countriesContainer.empty();
             }
         });
     }
+    selectedCountry();
     //selectedCountry();
 
     //keypress
-    function handleWithKeys(e) {
-        var key = e.keyCode;
-        var items = results.find("p");
-        var onhighlight = null;
-
-        for (let i = 0; i < items.length; i++){
-            var el = items.eq(i)
-            if (el.hasClass("highlighted")){
-                hasHighlight = i;
+    inputField.on("keydown", function(e){
+        var firstInputResult = $("p:first-child");
+        var lastInputResult = $("p:last-child");
+        if (countriesContainer.hasclass("highlighted")){
+            countriesContainer.find(firstInputResult).addClass("highlighted");
+        }
+        if (event.keyCode === 38){
+            if (countriesContainer.hasclass("highlighted")){
+                countriesContainer.find("p:last-child").addClass("highlighted");
             }
         }
-    }
+        if (event.keyCode === 40){
+            countriesContainer.find("p:first-child").addClass("highlighted");
+        }
+        if (!lastInputResult.hasclass("highlighted")){
+            console.log(lastInputResult);
+        }
+    });
 })();

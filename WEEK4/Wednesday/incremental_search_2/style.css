@@ -1,6 +1,14 @@
 *{
     background-color: lightgray;
     font-family: sans-serif;
+    
+}
+input{
+    border: 2px solid lightseagreen;
+    width: 150px;
+    height: 25px;
+    border-radius: 10px;
+    align-items: center;
 }
 
 .highlighted{
