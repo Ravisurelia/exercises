@@ -17,9 +17,9 @@
             success: function(response) {
                 console.log(response, userInput);
                 if (userInput > 0){
-                    response.show();
+                    countriesContainer.show();
                 } else {
-                    response.hide();
+                    countriesContainer.hide();
                 }
                 
             },
@@ -45,8 +45,8 @@
         //3. take those countries and append them to the DOM
         var htmlToDom = "";
 
-        for ( var i = 0; i < userInput.length; i++) {
-            htmlToDom += "<p>" + userInput[i] + "</p>";
+        for ( var i = 0; i < countriesContainer.length; i++) {
+            htmlToDom += "<p>" + countriesContainer[i] + "</p>";
         }
 
         //console.log("htmlToDom:", htmlToDom);
@@ -55,11 +55,11 @@
         function noResponse(){
             var doesNotMatch = 0;
             if (userInput === ""){
-                results.hide();
+                countriesContainer.hide();
             } else if (doesNotMatch != htmlToDom) {
-                results.html("<p class='no-result'>No result!</p>");
+                countriesContainer.html("<p class='no-result'>No result!</p>");
             } else {
-                results.show();
+                countriesContainer.show();
             }
         }
         noResponse();

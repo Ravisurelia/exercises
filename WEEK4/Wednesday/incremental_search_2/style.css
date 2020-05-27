@@ -5,10 +5,13 @@
 }
 input{
     border: 2px solid lightseagreen;
-    width: 150px;
-    height: 25px;
+    width: 200px;
+    height: 35px;
     border-radius: 10px;
     align-items: center;
+    position: absolute;
+    top: 20px;
+    left: 42%;
 }
 
 .highlighted{
