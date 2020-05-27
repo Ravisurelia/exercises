@@ -13,19 +13,15 @@
         //console.log(userInput);
         $.ajax({
             url: 'https://flame-egg.glitch.me/',//can also add "?q=a at the end .
-            data: "q=" + userInput,
+            data: userInput,
             success: function(response) {
                 console.log(response, userInput);
-            
-                var htmlToDom = "";
-
-                for ( var i = 0; i < response.length; i++) {
-                    htmlToDom += "<p>" + response[i] + "</p>";
+                if (userInput != inputField.val()) {
+                    console.log("Not valid");
+                    return;
                 }
 
-                //console.log("htmlToDom:", htmlToDom);
-                response.html(htmlToDom);
-                
+                console.log("Valid");    
             },
             error: function (error) {
                 console.log("error:", error);
