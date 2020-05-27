@@ -49,5 +49,9 @@ select{
     height: 30px;
     font-weight: bold;
     cursor: pointer;
+    position: absolute;
+    bottom: 5px;
+    left: 45%;
+    overflow: visible;
     
 }

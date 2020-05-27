@@ -35,7 +35,17 @@
                     
                     
                 }
+                //creating message popup for the searched results
+                if (data.items.length === 0){
+                    $("#displaymessage").html("<p>No results found for" + userInput + "</p>");
+                } else {
+                    $("#displaymessage").html("<p>Results found for" + userInput + "</p>");
+
+                }
+
                 $("#results-container").html(html);
+
+
 
                 if (data.next != null){
                     //console.log("more to come");
@@ -51,7 +61,7 @@
     //fatching the url for the more so it can show more results by doing the similar method as above
     $("#more-btn").on("click", function(){
         $.ajax({
-            url: 'https://elegant-croissant.glitch.me/spotify',
+            url: nextUrl,
             method: "GET",
             success: function(nextUrl){
                 nextUrl = nextUrl.albums || nextUrl.artists;
@@ -73,16 +83,7 @@
                 }
                 $("#results-container").html(html + htmlNew);
 
-                /*if (nextUrl.next != null){
-                    //console.log("more to come");
-                    
-                    nextUrl = data.next && data.next.replace('https://api.spotify.com/v1/search', 'https://elegant-croissant.glitch.me/spotify')
-                } else {
-                    $("#more-btn").hide();
-                }
-                $("#more-btn").css({
-                    visibility: "visible",
-                });*/ 
+                
             },
         });
     });
