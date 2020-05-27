@@ -7,7 +7,7 @@
 
     inputField.on("input", function(){
         //console.log("input is running!");
-        var results = []; //to store the countries that user has ut in the input box
+        //var results = []; //to store the countries that user has ut in the input box
         //1. capture what user is typing
         var userInput = inputField.val();
         //console.log(userInput);
@@ -16,11 +16,15 @@
             data: "q=" + userInput,
             success: function(response) {
                 console.log(response, userInput);
-                if (userInput > 0){
-                    countriesContainer.show();
-                } else {
-                    countriesContainer.hide();
+            
+                var htmlToDom = "";
+
+                for ( var i = 0; i < response.length; i++) {
+                    htmlToDom += "<p>" + response[i] + "</p>";
                 }
+
+                //console.log("htmlToDom:", htmlToDom);
+                response.html(htmlToDom);
                 
             },
             error: function (error) {
