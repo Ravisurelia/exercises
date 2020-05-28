@@ -112,7 +112,6 @@
     function generateResultsHtml (spotifyData){
         var imgUrl = "/default.jpg";
         for (var i = 0; i < spotifyData.items.length; i++){
-
             if (spotifyData.items[i].images[0].url){
                 imgUrl = spotifyData.items[i].images[0].url;
             }
@@ -132,8 +131,9 @@
         //in Vanilla js document.body.clientHeight
     }
 
-    var reachedBottom;
-    if (reachedBottom === 0){
+    /*var reachedBottom;
+    
+    if (scrollTop === 0){
         setNextUrl();
     }else {
         setTimeOut(function infiniteCheck(){
@@ -142,7 +142,7 @@
         //if reachedBottom is true
         //you want to go to spotify and get more data
         //if user has not reached to the bottom you want to settimeout and pass the infinitecheck function and number of milisecons we want to it to check
-    }
+    }*/
     
 })();
 
