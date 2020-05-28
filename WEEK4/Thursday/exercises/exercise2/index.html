@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    
+
     <h1>Spotify Search</h1>
     <input type="text" name="user-input"></input>
     <select>
@@ -14,10 +17,25 @@
         <option id="album">album</option>
     </select>
     <button id="submit-btn">submit</button>
+
+    <div class="results-info"></div>
+    <div class="image-info"></div>
+    <script id="allresults" type="text/x-handlebars-template">
+        {{#items}}
+        <div class="resultimages">
+            <a href={{external_urls.spotify}}>
+                <img src={{imgUrl}}>
+                <div class="searchednames">{{name}}</div>
+            </a>
+        </div>
+        {{/items}}
+    </script>
+
     <div id="displaymessage"></div>
     <div id="results-container"></div>
     <button id="more-btn">more</button>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="script.js"></script>
     
