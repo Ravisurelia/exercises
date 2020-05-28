@@ -24,6 +24,7 @@
                 var data = data.albums || data.artists;
                 console.log("new data:", data);
                 generateResultsHtml(data.items);
+                setNextUrl(data.next);
                 /*var imgUrl = "/default.jpg";
                 for (var i = 0; i < data.items.length; i++){
                     //console.log("data.items[i]", data.items[i]);
@@ -47,7 +48,7 @@
                 }
 
                 $("#results-container").html(html);
-                setNextUrl(data.next);
+                
 
 
                 /*if (data.next != null){
@@ -63,6 +64,8 @@
     });
     //fatching the url for the more so it can show more results by doing the similar method as above
     $("#more-btn").on("click", function(){
+        console.log("this is my new more", moreUrl);
+        
         $.ajax({
             url: moreUrl,
             method: "GET",
@@ -70,6 +73,7 @@
                 nextUrl = nextUrl.albums || nextUrl.artists;
                 //console.log("myNextUrl:", nextUrl);
                 generateResultsHtml(nextUrl.items);
+                setNextUrl(nextUrl.next);
                 /*var imgUrl = "/default.jpg";
                 for (var i = 0; i < nextUrl.items.length; i++){
                     //console.log("nextUrl.items.[i], nextUrl.items.[i]);
@@ -91,7 +95,7 @@
                     //we want to make more button appear
                     moreUrl = nextUrl.next && nextUrl.next.replace('https://api.spotify.com/v1/search', baseUrl);
                 }*/
-                setNextUrl(nextUrl.next);
+                
                 
 
                 
@@ -100,23 +104,24 @@
     });
 
     function setNextUrl(nextUrl){
-        console.log("our next url:", nextUrl);
-        if (nextUrl.next != null){
+        //console.log("our next url:", nextUrl);
+        if (nextUrl != null){
             //console.log("more to come");
             //we want to make more button appear
             moreUrl = nextUrl && nextUrl.replace('https://api.spotify.com/v1/search', baseUrl);
             $("#more-btn").addClass("hidden");
         } 
+        //console.log("boomboom", nextUrl);
     }
 
-    function generateResultsHtml (spotifyData){
+    function generateResultsHtml(spotifyData){
         var imgUrl = "/default.jpg";
-        for (var i = 0; i < spotifyData.items.length; i++){
-            if (spotifyData.items[i].images[0].url){
-                imgUrl = spotifyData.items[i].images[0].url;
+        for (var i = 0; i < spotifyData.length; i++) {
+            if (spotifyData[i].images.length > 0){
+                imgUrl = spotifyData[i].images[0].url;
             }
-            html += "<a href=" + spotifyData.items[i].external_urls.spotify + ">";
-            html += "<div>" + spotifyData.items[i].name + "</div>";
+            html += "<a href=" + spotifyData[i].external_urls.spotify + ">";
+            html += "<div>" + spotifyData[i].name + "</div>";
             html += "<img src=" + imgUrl + ">" + "</a>";         
         }
     }
