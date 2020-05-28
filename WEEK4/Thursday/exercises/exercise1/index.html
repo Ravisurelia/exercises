@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Handlebars Exercise 1!!</title>
+</head>
+
+<body>
+    <div class="authors-info"></div>
+
+    <script id="authorsId" type="text/x-handlebars-template">
+        {{#authors}}
+        <div class="container">
+            <div class="data">
+                <img src={{photo}}>
+                <h2>{{name}}</h2>
+                <h3>{{born}}</h3><h5>-</h5><h4>{{died}}</h4>
+                
+                <section>
+                    <div class="properties">temperament:</div>
+                    <div class="values">
+                        {{#selectedWritings}}
+                        <p>{{.}}</p>
+                        {{/selectedWritings}}
+                    </div>
+                </section>
+
+                <section>
+                    <div class="properties">quote:</div>
+                    <div class="values">
+                        <p>{{quote}}</p>
+                    </div>
+                </section>
+                
+            </div>
+        </div>
+        {{/authors}}
+    </script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>
