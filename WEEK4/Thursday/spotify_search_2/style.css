@@ -50,7 +50,6 @@ select{
     cursor: pointer;
     position: absolute;
     bottom: 5px;
-    left: 45%;
     overflow: visible;
     
 }

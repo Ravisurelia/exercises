@@ -41,9 +41,9 @@
                 }*/
                 //creating message popup for the searched results
                 if (data.items.length === 0){
-                    $("#displaymessage").html("<p>No results found for" + userInput + "</p>");
+                    $("#displaymessage").html("<p>No results found for " + userInput + " </p>");
                 } else {
-                    $("#displaymessage").html("<p>Results found for" + userInput + "</p>");
+                    $("#displaymessage").html("<p>Results found for " + userInput + " </p>");
 
                 }
 
@@ -151,8 +151,3 @@
     
 })();
 
-//next step = make all the images in a visible size
-//readjust more btn to bottom
-// popup message to show after the search
-//Again shows CORS errors
-// Guess Dillians have sent so many request that it takes too much time for results to appear on the screen
