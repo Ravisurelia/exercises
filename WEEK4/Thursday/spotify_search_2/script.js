@@ -23,8 +23,9 @@
                 //console.log("we are:", data);
                 var data = data.albums || data.artists;
                 console.log("new data:", data);
-                generateResultsHtml(data.items);
+                //generateResultsHtml(data.items);
                 setNextUrl(data.next);
+
                 /*var imgUrl = "/default.jpg";
                 for (var i = 0; i < data.items.length; i++){
                     //console.log("data.items[i]", data.items[i]);
@@ -37,8 +38,22 @@
                     html += "<div>" + data.items[i].name + "</div>";
                     html += "<img src=" + imgUrl + ">" + "</a>";
                     
-                    
                 }*/
+
+                function infiniteCheck(){
+                    var bottom = $(window).height() + $(window).scrollTop() === $(document).height();
+                    console.log("This is my bottom:", bottom);
+            
+                    if (bottom != true){
+                        setTimeout(infiniteCheck, 3000);
+                    }else {
+                        generateResultsHtml(data.items);
+                        setNextUrl(data.next);
+                        $("#results-container").html(html);
+                        infiniteCheck("infinitecheck 1");
+                    }
+                }
+                infiniteCheck("infinitecheck 2");
                 //creating message popup for the searched results
                 if (data.items.length === 0){
                     $("#displaymessage").html("<p>No results found for " + userInput + " </p>");
@@ -46,11 +61,6 @@
                     $("#displaymessage").html("<p>Results found for " + userInput + " </p>");
 
                 }
-
-                $("#results-container").html(html);
-                
-
-
                 /*if (data.next != null){
                     //console.log("more to come");
                     //we want to make more button appear
@@ -122,10 +132,10 @@
             }
             html += "<a href=" + spotifyData[i].external_urls.spotify + ">";
             html += "<div>" + spotifyData[i].name + "</div>";
-            html += "<img src=" + imgUrl + ">" + "</a>";         
+            html += '<img src="' + imgUrl + '"width="100" height="100">' + "</a>";'<img src="' + imgUrl + '"width="100" height="100">' + "</a>";'<img src="' + imgUrl + '"width="100" height="100">' + "</a>";         
         }
     }
-    //after calling the spotify API and we have got the results 
+    /*//after calling the spotify API and we have got the results 
     if (location.search.indexOf("scroll=infinite")>0){
         // we want to do infinite scroll
         $(window).scrollTop();
@@ -134,20 +144,11 @@
         //in Vanilla js wondow.innerHeight
         $(document).height();//height  of the whole document
         //in Vanilla js document.body.clientHeight
-    }
-
-    /*var reachedBottom;
-    
-    if (scrollTop === 0){
-        setNextUrl();
-    }else {
-        setTimeOut(function infiniteCheck(){
-
-        },5000);
-        //if reachedBottom is true
-        //you want to go to spotify and get more data
-        //if user has not reached to the bottom you want to settimeout and pass the infinitecheck function and number of milisecons we want to it to check
     }*/
+
+    
     
 })();
+
+//fixing the layout and the more button as it floats on the top and doesnt come at the end of the search
 
