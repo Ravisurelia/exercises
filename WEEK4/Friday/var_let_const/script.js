@@ -65,6 +65,35 @@ function logInfo(city) {
 
 /////exercise 4
 
+/* let getNameAndCountry = ({name, country}) => [name, country];
+
+let getRelocatedCity = (city1, city2={country: 'Germany'}) => {
+    let [, country] = getNameAndCountry(city2);
+    return {
+        ...city1,
+        country
+    };
+}; */
+
+function getNameAndCountry(city){
+  var name = this.name;
+  var country = this.country;
+  return[this.name, this.country];
+
+}
+function getRelocatedCity (city1, city2){
+  if (city2 === "undefined"){
+    var city2 = {
+      country: "Germany",
+    };
+  }
+  var country = getRelocatedCity(city2)[1];
+  return {
+    name: city1.name,
+    country: country,
+  };
+}
+
 
 
 
