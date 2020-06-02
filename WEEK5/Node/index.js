@@ -4,21 +4,33 @@
 
 const url = require("url");
 const qs = require("querystring");
+const data = process.argv[2];
+const parsedUrl = url.parse(data);
+const queries = qs.parse(parsedUrl.query);
+
+console.log("The protocol is", parsedUrl.protocol);
+console.log("The host is", parsedUrl.host);
+console.log("The hostname is", parsedUrl.hostname);
+console.log("The port is", parsedUrl.port);
+console.log("The pathname is", parsedUrl.pathname);
+console.log("The querie is", parsedUrl.query);
+if (parsedUrl.query === "") {
+  console.log("Query is Null");
+} else {
+  console.log("query is ", parsedUrl.query);
+}
 
 //console.log("qs path: ", qs.parse("scroll=infinite&cohort=dill"));
 
-console.log("my url: ", url);
+/* console.log("my url: ", url);
 console.log(
   "my url path: ",
   url.parse(
     "https://www.google.com/search?q=what+is+typescript&rlz=1C1CHBF_enDE871DE872&oq=what+is+type&aqs=chrome.0.0j69i57j0l6.5637j0j1&sourceid=chrome&ie=UTF-8?name=ravi"
   )
-);
+); */
 //console.log("process.argv: ", process.argv[2]);
-var newUrl = url();
-
-console.log(url.parse(process.argv[2]));
-console.log(newUrl);
+//console.log(url.parse(process.argv[2]));
 
 //------------------------------------------------;
 
