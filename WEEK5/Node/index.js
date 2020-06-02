@@ -18,6 +18,9 @@ if (parsedUrl.query === "") {
   console.log("Query is Null");
 } else {
   console.log("query is ", parsedUrl.query);
+  for (let [key, value] of Object.entries(queries)) {
+    console.log(`The value of the ${key} paramater is ${value}`);
+  }
 }
 
 //console.log("qs path: ", qs.parse("scroll=infinite&cohort=dill"));
