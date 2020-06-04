@@ -1,4 +1,5 @@
 const http = require("http");
+const fs = require("fs");
 
 const srever = http.createServer(function (request, response) {
   // function is an argument in this case!!
@@ -17,24 +18,29 @@ const srever = http.createServer(function (request, response) {
   console.log("request.headers : ", request.headers); //to get the headers
 
   ///---------------SENDING REQUEST----------------------------------
-  if (request.method === "GET") {
+  if (request.method === "GET" && request.url === "/request.txt") {
     //this is how we can response custome headers
     response.setHeader("Content-Type", "text/html");
-    //1st arg is the name of the0 header.
-    //2nd arg is the value which is assigned to the header.
-    //here text/html indicates that the file will be either text file or a html file
-
-    ///---------------STATUS CODE----------------------------------
     response.statusCode = 200;
     response.end(`
         <html>
             <title style="color:red;">Hello World!</title>
             <h1>Hello World!</h1>
         </html>
-    `); //we can write some html/ or leave it empty and which is rendred by the browser
-    //response.end sends the response
-    //if the status code is to be 200 then we dont even need to write the code as server will automatiucally do that
-    //"the body of the response" is the response we are sending as a html file
+    `);
+
+    let data = {
+      date: Date.now,
+      method: request.method,
+      url: request.url,
+      "user-agent": request.headers["user-agent"],
+    };
+
+    fs.appendFile("request.txt", JSON.stringify(data, "\t"), (err) => {
+      if (err) {
+        console.log("fs err: ", err);
+      }
+    });
   } else if (request.method === "HEAD") {
     response.setHeader("Content-Type", "text/html");
     response.statusCode = 200;
@@ -60,3 +66,5 @@ const srever = http.createServer(function (request, response) {
 }); //this function runs when the server recieves the request from the browser!!
 
 srever.listen(8080, () => console.log("server is listening!!"));
+
+//////yet not finished
