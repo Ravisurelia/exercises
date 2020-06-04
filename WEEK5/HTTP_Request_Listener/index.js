@@ -9,7 +9,7 @@ const srever = http.createServer(function (request, response) {
     console.log("request error: ", err);
   });
   response.on("error", (err) => {
-    console.log("request error: ", err);
+    console.log("response error: ", err);
   }); //function with arrows!!
 
   console.log("request.url : ", request.url); //to het the url

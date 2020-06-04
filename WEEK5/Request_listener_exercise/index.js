@@ -17,6 +17,19 @@ const srever = http.createServer(function (request, response) {
   console.log("request.method : ", request.method); //to get the method
   console.log("request.headers : ", request.headers); //to get the headers
 
+  let data = [
+    new Date(),
+    request.method,
+    request.url,
+    request.headers["user-agent"],
+    "\n",
+  ].join("\t");
+
+  fs.appendFile("request.txt", data, (err) => {
+    if (err) {
+      console.log("fs err: ", err);
+    }
+  });
   ///---------------SENDING REQUEST----------------------------------
   if (request.method === "GET" && request.url === "/request.txt") {
     //this is how we can response custome headers
@@ -28,19 +41,6 @@ const srever = http.createServer(function (request, response) {
             <h1>Hello World!</h1>
         </html>
     `);
-
-    let data = {
-      date: Date.now,
-      method: request.method,
-      url: request.url,
-      "user-agent": request.headers["user-agent"],
-    };
-
-    fs.appendFile("request.txt", JSON.stringify(data, "\t"), (err) => {
-      if (err) {
-        console.log("fs err: ", err);
-      }
-    });
   } else if (request.method === "HEAD") {
     response.setHeader("Content-Type", "text/html");
     response.statusCode = 200;
