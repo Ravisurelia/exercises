@@ -83,5 +83,5 @@ console.log("myStat: ", myStat); */
 /////////////////////////////////////
 ////////READFILE SYNCHRONOUSLY////////////////
 //////////////////////////////////////////////
-const myFile = fs.readFileSync(`${myPath}/index.js`, `utf8`);
-console.log("myfile: ", myFile);
+// const myFile = fs.readFileSync(`${myPath}/index.js`, `utf8`);
+// console.log("myfile: ", myFile);
