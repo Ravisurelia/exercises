@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 //app is now an instance of express which holds the very large object with bunch of diff properties
-const { myHtml } = require("./module.js");
 const cookieParser = require("cookie-parser");
+
 app.use(cookieParser());
 
 app.use(
@@ -20,50 +20,44 @@ app.use((req, res, next) => {
   if (req.url === "/cookie") {
     next();
   } else {
-    if (req.cookies["cookie-accept"]) {
+    if (req.cookies.hasAccess) {
+      console.log("go ahead!!!!!!1");
       next();
     } else {
-      res.cookie(req.url);
       res.redirect("/cookie");
+      res.cookie("attemptedUrl", req.url);
     }
   }
 });
 
-//this sreves all static files at a given path
-app.use(express.static(__dirname + "/public"));
-
-app.get("/", (req, res) => {
-  //console.log("req.cookies: ", req.cookies);
-  res.send({ myHtml }); //send the file to the browser and gives the output on the screen
-  res.sendFile(`${__dirname}/index.html`);
-});
+app.use(express.static(__dirname + "/public")); //this sreves all static files at a given path
 
 app.get("/cookie", (req, res) => {
   console.log("cookie!!!!!!!!");
   res.send(`<h1> This site uses the cookie. </h1>
     <h3> In order to surf on this site, you need to accept the cookie for optimal performance! Thank you!!!! </h3>
                 <form method="POST">
-                  <input type="checkbox" name="cookie-accept" value="true">
+                  <input type="checkbox" name="checkbox" value="true">
                   <button> Submit </button>
                 </form>`);
 });
 
 app.post("/cookie", (req, res) => {
-  console.log("req.body: ", req.body);
-  if (req.cookies["cookie-accept"] === "true") {
-    res.sendFile(`${__dirname}/index.html`);
+  //console.log("req.body: ", req.body);
+  if (req.body.checkbox === "true") {
+    res.cookie("hasAccess", true);
+    res.redirect(req.cookies.attemptedUrl);
   } else {
     res.send(
       `<h2> Dear customer, Please accept the cookie to surf on the site!! </h2>`
-    ) && res.redirect("/");
-    //res.cookie(true);
-    res.redirect("/");
+    );
   }
 });
 
 app.listen(8080, () => {
   console.log("express server is running"); //always check that the server is running......
 });
+
 //--------------------------------------------------------------------------------------------------------------;
 ///////////////////////////////////////////////////////
 //////////////CLASS NOTES/////////////////////////////
