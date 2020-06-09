@@ -12,18 +12,37 @@ app.use(
   })
 );
 
+const auth = function (req, res, next) {
+  const creds = basicAuth(req);
+  if (!creds || creds.name != "discoduck" || creds.pass != "opensesame") {
+    res.setHeader(
+      "WWW-Authenticate",
+      'Basic realm="Enter your credentials to see this stuff."'
+    );
+    res.sendStatus(401);
+  } else {
+    next();
+  }
+};
+
 app.use((req, res, next) => {
   console.log("--------------");
   console.log(`ran ${req.method}`);
   console.log(`ran ${req.url}`);
   console.log(`at: ${Date.now()}`);
   console.log("--------------");
+
   if (req.url === "/cookie") {
     next();
   } else {
     if (req.cookies.hasAccess) {
-      console.log("go ahead!!!!!!1");
-      next();
+      console.log("go ahead!!!!!!");
+      if (req.url === "/Thursday") {
+        console.log("This is my stickman folder!");
+        auth(req, res, next);
+      } else {
+        next();
+      }
     } else {
       res.redirect("/cookie");
       res.cookie("attemptedUrl", req.url);
@@ -32,29 +51,6 @@ app.use((req, res, next) => {
 });
 
 app.use(express.static(__dirname + "/public")); //this sreves all static files at a given path
-
-/* app.use((req, res, next) => {
-  console.log("--------------");
-  console.log(`ran ${req.method}`);
-  console.log(`ran ${req.url}`);
-  console.log(`at: ${Date.now()}`);
-  console.log("--------------");
-  if (req.url === "/Thursday") {
-    const auth = function (req, res, next) {
-      const creds = basicAuth(req);
-      if (!creds || creds.name != "discoduck" || creds.pass != "opensesame") {
-        res.setHeader(
-          "WWW-Authenticate",
-          'Basic realm="Enter your credentials to see this stuff."'
-        );
-        res.sendStatus(401);
-      } else {
-        next();
-      }
-    };
-    app.use(auth);
-  }
-}); */
 
 app.get("/cookie", (req, res) => {
   console.log("cookie!!!!!!!!");
