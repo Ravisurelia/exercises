@@ -1,0 +1,8 @@
+body{
+    background-color: mediumaquamarine;
+}
+
+#canvas{
+    border: 2px dotted darkgreen;
+    background-color: yellowgreen;
+}

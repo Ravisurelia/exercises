@@ -1,0 +1,13 @@
+<div class="container">
+    {{#projects}}
+    <div>
+        <li class="partials-list">
+            {{#if ../img}}
+            <a class="directory-links" href="/projects/{{directory}}"><img class="screenshot"
+                    src="/{{directory}}/screenshot.png" /></a>
+            {{/if}}
+            <a class="directory-links" href="/projects/{{directory}}">{{name}}</a>
+        </li>
+    </div>
+    {{/projects}}
+</div>

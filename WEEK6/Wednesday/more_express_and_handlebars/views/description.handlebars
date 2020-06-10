@@ -1,0 +1,19 @@
+<div class="main">
+    <div class="projects-list class">
+        <h3>Projects</h3>
+        <div class="name-list">
+            {{>mypartials}}
+        </div>
+    </div>
+
+    <div class="projects-container class">
+        <h1 class="project-name">{{project.name}}</h1>
+        <a href="{{project.directory}}" target="_blank">
+            <img class="description-screenshot" src="/{{project.directory}}/screenshot.png" />
+        </a>
+        <p class="project-description">{{project.description}}</p>
+        <a class="runit" href="/{{project.directory}}" target="_blank">Run it!!</a>
+        <a class="return" href="/">Return🢀</a>
+    </div>
+
+</div>
