@@ -1,39 +1,43 @@
 (function () {
-    var request;
-    var links = sports.querySelectorAll("a");
-    var sports = document.getElementById("Sports");
-    
-    var linksArray = [];
+  ticker("ticker1", -1);
 
-    for (var i = 0; i < links.length; i++) {
-        linksArray.push(links[i]);
-    }
+  ticker("ticker2", 1);
 
-    for (var k = 0; k < links.length; k++) {
-        linksArray[i].addEventListener("mouseover", cancelSlide);
-        linksArray[i].addEventListener("mouseout", resumeSlide);
-        console.log(linksArray[i]);
-    }
-    slide();
-    function slide() {
-        var left = sports.offsetLeft;
-        left--;
-        sports.style.left = left + "px";
-        if (left <= -links[0].offsetWidth) {
-            sports.style.left = left + links[0].offsetWidth + "px";
-            links[0].parentElement.appendChild(links[0]);
-        }
-        request = requestAnimationFrame(slide);
-    }
-    function cancelSlide (event) {
-        event.target.style.color = "yellow";
-        event.target.style.textDecoration = "underline";
-        cancelAnimationFrame(request);
-    }
-    function resumeSlide (event) {
-        event.target.style.color = "white";
-        event.target.style.textDecoration = "";
-        requestAnimationFrame(slide);
-    } 
-}());
+  function ticker(id, step) {
+    var ticker = document.getElementById(id);
+    var headlines = ticker.querySelector(".headlines");
+    var links = headlines.getElementsByTagName("A");
+    var curX = headlines.offsetLeft;
+    var headlinesWidth = headlines.offsetWidth;
+    var tickerWidth = ticker.offsetWidth;
+    var linkWidth =
+      step < 0 ? links[0].offsetWidth : links[links.length - 1].offsetWidth;
+    var animId;
 
+    headlines.addEventListener("mouseenter", function (e) {
+      cancelAnimationFrame(animId);
+    });
+
+    headlines.addEventListener("mouseleave", function () {
+      moveHeadlines();
+    });
+
+    moveHeadlines();
+
+    function moveHeadlines() {
+      curX += step;
+      if (step < 0 && curX < -linkWidth) {
+        curX += linkWidth;
+        headlines.appendChild(links[0]);
+        linkWidth = links[0].offsetWidth;
+      }
+      if (step > 0 && curX + headlinesWidth > tickerWidth + linkWidth) {
+        curX -= linkWidth;
+        headlines.insertBefore(links[links.length - 1], links[0]);
+        linkWidth = links[links.length - 1].offsetWidth;
+      }
+      headlines.style.left = curX + "px";
+      animId = requestAnimationFrame(moveHeadlines);
+    }
+  }
+})();

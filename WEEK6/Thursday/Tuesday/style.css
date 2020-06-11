@@ -13,7 +13,7 @@ body {
 .Sports {
   white-space: nowrap;
   position: absolute;
-  left: 85%;
+  left: 95%;
   top: 0;
 }
 
@@ -22,6 +22,4 @@ body {
   font-family: "sans-serif", "Calibri", "Gill Sans", "Gill Sans MT",
     "Trebuchet MS";
   color: whitesmoke;
-  margin-right: 20px;
-  margin-left: 20px;
 }
