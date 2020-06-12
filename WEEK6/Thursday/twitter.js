@@ -58,7 +58,7 @@ module.exports.getTweet = function (bearerToekn, callback) {
   const options = {
     host: "api.twitter.com",
     path:
-      "/1.1/statuses/user_timeline.json?count=100&screen_name=BBCWorld&tweet_mode=extended",
+      "/1.1/statuses/user_timeline.json?count=100&screen_name=Cristiano&tweet_mode=extended",
     method: "GET",
     headers: {
       Authorization: `Bearer ${bearerToekn}`,
@@ -84,7 +84,7 @@ module.exports.getTweet = function (bearerToekn, callback) {
       //console.log("body: ", body);
       const parsedBody = JSON.parse(body);
       //console.log("parsedBody: ", parsedBody);
-      callback(null, parsedBody.access_token);
+      callback(null, parsedBody);
     });
   }
 
@@ -94,12 +94,14 @@ module.exports.getTweet = function (bearerToekn, callback) {
 };
 
 module.exports.filterTweets = function (tweets) {
-  let array = [];
-  for (let i = 0; i < array.length; i++) {
-    console.log(tweets[i].full_text);
+  console.log("here is my tweets: ", tweets);
+  let myArray = [];
+  let obj = {};
+  for (let i = 0; i < tweets.length; i++) {
+    /* console.log(tweets[i].full_text);
     console.log(tweets[i].entities.urls);
-    console.log(tweets[i].entities.media);
-    if (tweets[i].entities_url.length === 1) {
+    console.log(tweets[i].entities.media); */
+    if (tweets[i].entities.urls.length === 1) {
       let text = tweets[i].full_text.replace(
         tweets[i].entities.urls[0].url,
         ""
@@ -112,24 +114,25 @@ module.exports.filterTweets = function (tweets) {
             ""
           );
         }
-        let obj = {
+        obj = {
           href: tweets[i].entities.urls[0].url,
           text: filteredText,
         };
-        array.push(obj);
+        console.log("myobj: ", obj);
+        //myArray.push(obj);
       } else {
-        let obj = {
+        obj = {
           href: tweets[i].entities.urls[0].url,
           text: filteredText,
         };
       }
-      array.push(obj);
+      myArray.push(obj);
     } else {
-      console.log(`tweet[${i}]`);
+      //console.log(`tweet[${i}]`);
     }
   }
-  console.log("array: ", array);
-  return array;
+  console.log("myArray: ", myArray);
+  return myArray;
 };
 //--------------------------------------------------------------------------
 //somehow its not working!!!
