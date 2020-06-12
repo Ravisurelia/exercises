@@ -50,7 +50,7 @@ module.exports.getToken = function (callback) {
   });
 };
 
-module.exports.getTweet = function (bearerToekn, callback) {
+module.exports.getTweet = function (bearerToekn, pageName) {
   //this functon will use token to get tweets from twitter
   return new Promise(function (resolve, reject) {
     const tokenCreds = Buffer.from(bearerToekn).toString("base64");
@@ -60,8 +60,7 @@ module.exports.getTweet = function (bearerToekn, callback) {
     });
     const options = {
       host: "api.twitter.com",
-      path:
-        "/1.1/statuses/user_timeline.json?count=100&screen_name=Cristiano&tweet_mode=extended",
+      path: `/1.1/statuses/user_timeline.json?count=100&screen_name=${pageName}&tweet_mode=extended`,
       method: "GET",
       headers: {
         Authorization: `Bearer ${bearerToekn}`,
@@ -110,7 +109,7 @@ module.exports.filterTweets = function (tweets) {
         tweets[i].entities.urls[0].url,
         ""
       );
-      let filteredText = text;
+      let filteredText = `${text}(${tweets[i].user.name})`;
       if (tweets[i].entities.media) {
         for (let k = 0; k < tweets[i].entities.media.length; k++) {
           filteredText = filteredText.replace(
@@ -139,8 +138,6 @@ module.exports.filterTweets = function (tweets) {
   return myArray;
 };
 //--------------------------------------------------------------------------
-//somehow its not working!!!
-//having problem in line 98---says length not defined
 
 ////////////////CLASS PRACTICE
 /* module.exports.getToken = function (callback) {
