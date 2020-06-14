@@ -32,7 +32,7 @@ function logSizes(path) {
 logSizes(path);
 setTimeout(function () {
   console.log("done!");
-}, 2000);
+}, 2000); ///dont know if this is the right approach!!!! but it gives the final output that we required!!
 
 /* function mapSizes(path) {
   let files = fs.readdirSync(path, { withFileTypes: true });
